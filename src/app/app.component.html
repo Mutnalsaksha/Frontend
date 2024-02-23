@@ -1,0 +1,92 @@
+<div class="app-container d-flex flex-column min-vh-100">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="">DocCare</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <!-- Right Side Of Navbar -->
+        <ul class="navbar-nav">
+          <li class="nav-item" [class.active]="isRouteActive('')">
+            <a class="nav-link" aria-current="page" routerLink="">Home</a>
+          </li>
+          <li class="nav-item" [class.active]="isRouteActive('services')">
+            <a class="nav-link" routerLink="services">Services</a>
+          </li>
+          <li class="nav-item" [class.active]="isRouteActive('aboutus')">
+            <a class="nav-link" routerLink="aboutus">About Us</a>
+          </li>
+          <li class="nav-item" [class.active]="isRouteActive('contactus')">
+            <a class="nav-link" routerLink="contactus">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn" routerLink="/contactus">Book Service</a>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="flex-grow-1">
+    <router-outlet></router-outlet>
+  </div>
+   <!-- footer section -->
+   <footer class="footer_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 footer-col">
+          <div class="footer_contact">
+            <h4>
+              Contact Us
+            </h4>
+            <div class="contact_link_box">
+              <a href="">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <a href="/contactus">
+                  Location
+                </a>
+              </a>
+              <a href="">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>
+                  Call +01 1234567890
+                </span>
+              </a>
+              <a href="">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span>
+                  demo@gmail.com
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 footer-col">
+          <div class="footer_detail">
+            <h2 class="footer-logo">DocCare</h2>
+            <p>
+              Your dedicated partner in well-being, delivering personalized and compassionate healthcare solutions to your doorstep.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 footer-col">
+          <h4>
+            Opening Hours
+          </h4>
+          <p>
+            Everyday
+          </p>
+          <p>
+            10.00 AM -10.00 PM
+          </p>
+        </div>
+      </div>
+      <div class="footer-info">
+        <p>
+          &copy; <span id="displayYear"></span> All Rights Reserved By EiTechOne
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
