@@ -17,10 +17,10 @@ export class ContactUsService {
 
   submitForm(): Observable<any> {
     this.formSubmitted = true;
- 
+
     setTimeout(() => {
       this.formSubmitted = false;
-    }, 2000); 
+    }, 2000);
 
     return of({ success: true });
   }
@@ -31,7 +31,7 @@ export class ContactUsService {
 
   submitContactForm(formData: any): Observable<any> {
     // return this.http.post<any>(this.serverUrl, formData);
-    return this.http.post('http://localhost:3000/addbookservice/submit', formData)
+    return this.http.post(this.serverUrl, formData)
     .pipe(
       tap((response: any) => {
         //console.log('Response from Server:', response);
