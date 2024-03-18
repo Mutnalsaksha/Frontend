@@ -29,7 +29,7 @@
                 <div class="dot" id="dot3"></div>
               </div>
             </div>
-        </div> 
+        </div>
     </div>
 </section>
 
@@ -74,7 +74,7 @@
     <div class="filter-option" [class.active]="activeFilter === 'delivery'" (click)="filterServices('delivery')">Delivery</div>
     <div class="filter-option" [class.active]="activeFilter === 'others'" (click)="filterServices('others')">Others</div>
   </div>
-  
+
 <!-- Service boxes -->
 <div class="service-boxes">
   <div *ngFor="let service of filteredServices" class="service-box" [attr.data-category]="service.dataCategory">
@@ -88,7 +88,7 @@
         <div class="card-body">
           <h4 class="card-title">{{service.title}}</h4>
           <p class="card-text">{{service.description}}</p>
-          <a href="/contactus" class="btn btn-primary">Book Now</a>
+          <a routerLink="/contactus" class="btn btn-primary">Book Now</a>
         </div>
       </div>
     </div>
