@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <section class="contact-us-section">
     <div class="container">
       <div class="row">
@@ -89,7 +90,7 @@
                 <input type="text" id="message"  [(ngModel)]="formData.message" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="What can we help you with?" required/>
                 <div class="alert" *ngIf="messageError">{{ messageError }}</div>
               </div>
-              
+
               <!-- <div *ngIf="errorMessage" class="error-message" style="color: red;">
                 <p>{{ errorMessage }}</p>
               </div> -->
@@ -104,7 +105,7 @@
                     Submit
                   </button>
                 </div>
-              </form> 
+              </form>
             </form>
           </div>
         </div>
@@ -123,3 +124,4 @@
     </div>
   </section>
   <!-- end book section -->
+<app-footer></app-footer>

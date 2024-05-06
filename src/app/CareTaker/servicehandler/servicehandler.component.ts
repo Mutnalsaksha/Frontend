@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class ServicehandlerComponent {
 
+  toggleDropdown() {
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    if (dropdownMenu) {
+      dropdownMenu.classList.toggle("show");
+    }
+  }
 }

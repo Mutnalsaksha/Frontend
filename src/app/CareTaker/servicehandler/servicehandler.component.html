@@ -1,1 +1,51 @@
-<p>servicehandler works!</p>
+<!-- sidebar-navbar-component.html -->
+
+<div class="navbar">
+  <!-- Logo or brand -->
+  <div class="logo">
+    <!-- Your logo or brand goes here -->
+    <h2>My Brand</h2>
+  </div>
+
+  <!-- Search bar -->
+  <div class="search-bar">
+    <input type="text" placeholder="Search...">
+    <button><i class="fa fa-search"></i></button>
+  </div>
+
+  <!-- Options (represented by three dots) -->
+  <div class="options">
+    <div class="dots-menu" (click)="toggleDropdown()">
+      <!-- You can use font-awesome or any other icon library for the three dots -->
+      <i class="fa fa-ellipsis-v"></i>
+      <!-- Dropdown menu for options -->
+      <div class="dropdown-content" id="dropdownMenu">
+        <!-- Options menu items -->
+        <a href="#">Option A</a>
+        <a href="#">Option B</a>
+        <a href="#">Option C</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main content area -->
+<div class="sidebar-main-content">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar content goes here -->
+    <div class="sidebar-options">
+      <!-- Sample options -->
+      <a href="sevendays-table">Tickets for last 7 days</a>
+      <a href="#">Tickets assigned to Me</a>
+      <a href="#">Tickets New</a>
+      <a href="#">Tickets in Progress</a>
+      <a href="#">Tickets Overdue</a>
+    </div>
+  </div>
+
+  <!--  &lt;!&ndash; Main content &ndash;&gt;-->
+  <!--  <div class="main-content">-->
+  <!--    &lt;!&ndash; Your main content goes here &ndash;&gt;-->
+  <!--  </div>-->
+</div>
