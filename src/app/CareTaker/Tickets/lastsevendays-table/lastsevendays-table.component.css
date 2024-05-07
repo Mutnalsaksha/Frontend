@@ -4,6 +4,12 @@
   flex-grow: 1;
   padding: 20px;
   margin-left: 300px;
-  height: calc(100vh-60px);
   overflow: auto;
+}
+
+table {
+  width: 70%;
+  border-collapse: collapse;
+  margin: 100px;
+  margin-left: 300px;
 }

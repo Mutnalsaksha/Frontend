@@ -36,7 +36,7 @@
     <!-- Sidebar content goes here -->
     <div class="sidebar-options">
       <!-- Sample options -->
-      <a href="sevendays-table">Tickets for last 7 days</a>
+      <a href="">Tickets for last 7 days</a>
       <a href="#">Tickets assigned to Me</a>
       <a href="#">Tickets New</a>
       <a href="#">Tickets in Progress</a>
@@ -44,8 +44,38 @@
     </div>
   </div>
 
-  <!--  &lt;!&ndash; Main content &ndash;&gt;-->
-  <!--  <div class="main-content">-->
-  <!--    &lt;!&ndash; Your main content goes here &ndash;&gt;-->
-  <!--  </div>-->
+    <!-- Main content -->
+    <div class="main-content">
+      <!-- Your main content goes here -->
+      <div class="table-container">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Req-Date</th>
+            <th>Service-Type</th>
+            <th>Assigned-To</th>
+            <th>Availed-Date</th>
+            <th>Number of days Open</th>
+            <th>Expected Time to close</th>
+            <th>Severity</th>
+            <th>Status</th>
+          </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let ticket of displayData">
+                <td>{{ ticket.requestId }}</td>
+                <td>{{ ticket.requestDate }}</td>
+                <td>{{ ticket.serviceType }}</td> <!-- Display service type here -->
+                <td>{{ ticket.assignedTo }}</td>
+                <td>{{ ticket.availedDate }}</td>
+                <td>{{ ticket.daysOpen }}</td>
+                <td>{{ ticket.expectedTimeToClose }}</td>
+                <td>{{ ticket.severity }}</td>
+                <td>{{ ticket.status }}</td>
+              </tr>
+          </tbody>
+        </table>
+        </div>
+    </div>
 </div>
