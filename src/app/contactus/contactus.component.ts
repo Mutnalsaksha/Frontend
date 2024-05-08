@@ -8,7 +8,7 @@ import { ContactUsService } from '../newservices/contactus.service';
 })
 export class ContactusComponent {
   formData: any = {
-    date: new Date(),
+    date: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
     name: '',
     phoneNumber: '',
     email: '',
@@ -24,7 +24,7 @@ export class ContactusComponent {
   messageError = '';
   errorMessage = '';
   successMessage = '';
-  
+
   constructor(private contactUsService: ContactUsService) {}
 
   submitContactForm() {
