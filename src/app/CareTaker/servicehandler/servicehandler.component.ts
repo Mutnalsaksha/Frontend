@@ -22,40 +22,35 @@ export class ServicehandlerComponent implements OnInit {
     });
   }
 
+
+
+
+
   // getDisplayData(): Observable<any> {
   //   return this.http.get<any>('http://localhost:3000/displaydata').pipe(
-  //     map((data:any) => data.map((item:any) => ({
+  //     map((data: any[]) => data.map((item, index) => ({
   //       ...item,
-  //       requestDate: this.formatDate(item.requestDate),
-  //       requestId: item.requestId // Add the requestId field here
+  //       requestId: index + 1, // Sequential ID starting from 1
+  //       requestDate: this.formatDate(item.requestDate)
   //     })))
   //   );
   // }
 
-
-
-
   getDisplayData(): Observable<any> {
     return this.http.get<any>('http://localhost:3000/displaydata').pipe(
-      map((data: any[]) => data.map((item, index) => ({
-        ...item,
-        requestId: index + 1, // Sequential ID starting from 1
-        requestDate: this.formatDate(item.requestDate)
-      })))
+      map((data: any[]) => {
+        // Sort the data array by requestDate in descending order
+        data.sort((a, b) => new Date(b.requestDate).getTime() - new Date(a.requestDate).getTime());
+        // Map and format the data
+        return data.map((item, index) => ({
+          ...item,
+          requestId: index + 1, // Sequential ID starting from 1
+          requestDate: this.formatDate(item.requestDate)
+        }));
+      })
     );
   }
 
-
-
-
-  fetchData(): void {
-    this.shService.getDisplayData().subscribe(data => {
-      this.displayData = data.map((item:any) => ({
-        ...item,
-        requestDate: this.formatDate(item.requestDate),
-      }));
-    });
-  }
 
   // Helper method to format date
   formatDate(dateString: string): string {

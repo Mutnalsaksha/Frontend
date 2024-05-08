@@ -1,5 +1,7 @@
 /* sidebar-navbar-component.css */
-
+.page{
+  position: fixed;
+}
 /* Navbar styling */
 .navbar {
   background-color: #ffbe33;
@@ -7,6 +9,9 @@
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  position: sticky; /* Add position sticky */
+  top: 0; /* Stick to the top */
+  z-index: 1000; /* Ensure navbar stays above other elements */
 }
 
 /* Logo styling */
@@ -86,7 +91,6 @@
 /* Main content area */
 .sidebar-main-content {
   display: flex;
-  height: 100vh;
 }
 
 /* Sidebar styling */
@@ -94,6 +98,10 @@
   width: 250px;
   background-color: #222831;
   color: white;
+  position: sticky;
+  top: 60px; /* Stick to the top when scrolling down */
+  height: calc(100vh - 50px); /* Ensure sidebar takes full viewport height */
+
 }
 
 /* Sidebar options styling */
