@@ -10,6 +10,8 @@ import {LastsevendaysTableComponent} from "./CareTaker/Tickets/lastsevendays-tab
 
 
 const routes: Routes = [
+  {path: '',redirectTo: '/login', pathMatch: 'full'},
+  {path:'login', component: LoginComponent},
   {path:'',component:HomeComponent},
   {path:'services',component:ServicesComponent},
   {path:'aboutus',component:AboutusComponent},
