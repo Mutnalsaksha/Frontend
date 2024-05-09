@@ -54,8 +54,17 @@ export class ServicehandlerComponent implements OnInit {
 
   // Helper method to format date
   formatDate(dateString: string): string {
-    // Add your custom date formatting logic here
-    return new Date(dateString).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+    const options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+      timeZone: 'Asia/Kolkata'
+    };
+    return new Date(dateString).toLocaleString('en-IN', options);
   }
 
   toggleDropdown() {

@@ -14,6 +14,7 @@ import { FooterComponent } from "./footer/footer.component";
 import { LoginComponent } from "./CareTaker/login/login.component";
 import { ServicehandlerComponent} from "./CareTaker/servicehandler/servicehandler.component";
 import { LastsevendaysTableComponent } from './CareTaker/Tickets/lastsevendays-table/lastsevendays-table.component';
+import {DateFormatPipe} from "./pipes/date-format.pipe";
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { LastsevendaysTableComponent } from './CareTaker/Tickets/lastsevendays-t
     LoginComponent,
     ServicehandlerComponent,
     LastsevendaysTableComponent,
-
+    DateFormatPipe,
 
   ],
   imports: [
