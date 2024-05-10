@@ -171,7 +171,7 @@ import { ContactUsService } from '../newservices/contactus.service';
 
       // Set the visibility of the next set of testimonials to true
       this.testimonials.slice(this.currentSetIndex, this.currentSetIndex + 2).forEach(testimonial => testimonial.visible = true);
-    }, 3000); // Adjust the interval (milliseconds) for scrolling
+    }, 5000); // Adjust the interval (milliseconds) for scrolling
   }
 
   private setupScrolling() {
@@ -211,7 +211,7 @@ import { ContactUsService } from '../newservices/contactus.service';
     // Navigate to the "aboutus" route
     this.router.navigate(['/aboutus']);
   }
-  
+
   bookNow(): void {
     // Implement the functionality when the "Book Now" button is clicked
     // You can handle form submission, send data to a server, etc.

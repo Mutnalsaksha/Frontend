@@ -52,7 +52,7 @@ export class ContactusComponent {
         setTimeout(() => {
           this.successMessage = '';
           this.formSubmitted = false;
-        }, 5000);
+        }, 3000);
       },
       (error) => {
         // Handle other errors

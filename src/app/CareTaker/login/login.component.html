@@ -21,8 +21,9 @@
     </div>
 
     <div class="form-group">
-      <button type="submit">Login</button>
+      <button type="submit" routerLink="nav" routerLinkActive="active">Login</button>
     </div>
+    <button class="btn btn-link"  id="btn2" (click)="resetForm(loginForm)">Refresh</button>
 
     <div *ngIf="loginError" class="error-message">
       Invalid email or password. Please try again.

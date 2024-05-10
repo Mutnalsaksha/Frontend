@@ -17,6 +17,7 @@ import { LastsevendaysTableComponent } from './CareTaker/Tickets/lastsevendays-t
 import {DateFormatPipe} from "./pipes/date-format.pipe";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

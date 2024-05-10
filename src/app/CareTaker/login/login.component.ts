@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from "@angular/forms";
+import { Component,OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { Router } from '@angular/router';
 import { LoginService} from "../../services/login.service";
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   users: any[] = []; // Assuming your user data structure
   loginError: boolean = false;
 
@@ -31,12 +32,11 @@ export class LoginComponent {
     return this.loginForm.get('password');
   }
 
+
+
   ngOnInit(): void {
-    // this.loginService.getlogin().subscribe(
-    //   (data: any) => {
-    //     this.users = data;
-    //   }
-    // );
+
+
   }
 
   onLoginClick() {
@@ -44,21 +44,42 @@ export class LoginComponent {
       const enteredEmail = this.emailControl?.value;
       const enteredPassword = this.passwordControl?.value;
 
-      const user = this.users.find(u => u.email === enteredEmail && u.password === enteredPassword);
-
-      if (user) {
-        this.handleSuccessfulLogin();
+      // Check if emailControl and passwordControl are defined before accessing their values
+      if (enteredEmail && enteredPassword) {
+        this.loginService.login(enteredEmail, enteredPassword).subscribe(
+          (data: any) => {
+            console.log('Login response:', data);
+            this.handleLoginResponse(data);
+          },
+          error => {
+            console.error('Error:', error);
+            this.handleFailedLogin();
+          }
+        );
       } else {
-        this.handleFailedLogin();
+        console.log('Email or password is null or undefined');
       }
+    } else {
+      console.log('Form is invalid');
     }
   }
 
-  private handleSuccessfulLogin() {
-    this.router.navigate(['/Dashboard/Home']);
+  private handleLoginResponse(response: any) {
+    if (response.message === 'Login successful') {
+      console.log('Login successful');
+      this.router.navigate(['/service-handler']);
+    } else {
+      console.log('Login failed');
+      this.handleFailedLogin();
+    }
   }
 
   private handleFailedLogin() {
     this.loginError = true;
   }
+
+  resetForm(form: FormGroup): void {
+    form.reset();
+  }
 }
+
