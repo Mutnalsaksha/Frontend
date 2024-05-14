@@ -4,6 +4,20 @@ import { HttpClient } from '@angular/common/http'; // Import HttpClient
 import {Observable} from "rxjs";
 import { map } from 'rxjs/operators'; // Import the map operator
 
+// Define an interface for the ticket object
+interface Ticket {
+  requestId: string;
+  requestDate: string;
+  serviceType: string;
+  assignedTo: string;
+  availedDate: string;
+  daysOpen: number;
+  expectedTimeToClose: string;
+  severity: string;
+  status: string;
+  viewed: boolean;
+}
+
 @Component({
   selector: 'app-servicehandler',
   templateUrl: './servicehandler.component.html',
@@ -73,4 +87,28 @@ export class ServicehandlerComponent implements OnInit {
       dropdownMenu.classList.toggle("show");
     }
   }
+
+  //Tickets for last 7 days
+  filterTicketsForLast7Days() {
+    console.log('Filtering tickets for last 7 days');
+    const currentDate = new Date();
+    // Set time to midnight for both today and seven days ago
+    const beginningOfToday = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+    const beginningOfSevenDaysAgo = new Date(currentDate.getTime() - 6 * 24 * 60 * 60 * 1000); // Seven days ago from midnight
+
+    // Filter tickets requested between beginningOfSevenDaysAgo and beginningOfToday
+    this.displayData = this.displayData.filter((ticket: Ticket) => {
+      const ticketDate = new Date(ticket.requestDate);
+      return ticketDate >= beginningOfSevenDaysAgo && ticketDate <= beginningOfToday;
+    });
+  }
+
+//Tickets New
+  filterTicketsNew() {
+    console.log('Filtering new tickets');
+    // Filter tickets where viewed is false
+    this.displayData = this.displayData.filter((ticket: Ticket) => !ticket.viewed);
+  }
+
+
 }
