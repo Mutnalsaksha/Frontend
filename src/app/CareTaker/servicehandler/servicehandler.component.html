@@ -1,49 +1,26 @@
 <!-- sidebar-navbar-component.html -->
 <div class="Page">
-<div class="navbar">
-  <!-- Logo or brand -->
-  <div class="logo">
-    <!-- Your logo or brand goes here -->
-    <h2>My Brand</h2>
+  <div class="navbar">
+    <div class="logo">
+      <h2>My Brand</h2>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
+      <button><i class="fa fa-search"></i></button>
+    </div>
   </div>
 
-  <!-- Search bar -->
-  <div class="search-bar">
-    <input type="text" placeholder="Search...">
-    <button><i class="fa fa-search"></i></button>
-  </div>
-
-  <!-- Options (represented by three dots) -->
-  <div class="options">
-    <div class="dots-menu" (click)="toggleDropdown()">
-      <!-- You can use font-awesome or any other icon library for the three dots -->
-      <i class="fa fa-ellipsis-v"></i>
-      <!-- Dropdown menu for options -->
-      <div class="dropdown-content" id="dropdownMenu">
-        <!-- Options menu items -->
-        <a href="#">Option A</a>
-        <a href="#">Option B</a>
-        <a href="#">Option C</a>
+  <!-- Main content area -->
+  <div class="sidebar-main-content">
+    <div class="sidebar">
+      <div class="sidebar-options">
+        <a href="">Tickets for last 7 days</a>
+        <a href="#">Tickets assigned to Me</a>
+        <a href="#">Tickets New</a>
+        <a href="#">Tickets in Progress</a>
+        <a href="#">Tickets Overdue</a>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- Main content area -->
-<div class="sidebar-main-content">
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <!-- Sidebar content goes here -->
-    <div class="sidebar-options">
-      <!-- Sample options -->
-      <a href="">Tickets for last 7 days</a>
-      <a href="#">Tickets assigned to Me</a>
-      <a href="#">Tickets New</a>
-      <a href="#">Tickets in Progress</a>
-      <a href="#">Tickets Overdue</a>
-    </div>
-  </div>
-
 
     <!-- Main content -->
     <div class="main-content">
@@ -64,20 +41,35 @@
           </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let ticket of displayData">
-                <td>{{ ticket.requestId }}</td>
-                <td>{{ formatDate(ticket.requestDate) }}</td>
-                <td>{{ ticket.serviceType }}</td> <!-- Display service type here -->
-                <td>{{ ticket.assignedTo }}</td>
-                <td>{{ ticket.availedDate }}</td>
-                <td>{{ ticket.daysOpen }}</td>
-                <td>{{ ticket.expectedTimeToClose }}</td>
-                <td>{{ ticket.severity }}</td>
-                <td>{{ ticket.status }}</td>
-              </tr>
+          <tr *ngFor="let ticket of displayData">
+            <td (click)="openTicketDetails(ticket)"  class="pointer">{{ ticket.requestId }}</td>
+            <td>{{ formatDate(ticket.requestDate) }}</td>
+            <td>{{ ticket.serviceType }}</td>
+            <td>{{ ticket.assignedTo }}</td>
+            <td>{{ ticket.availedDate }}</td>
+            <td>{{ ticket.daysOpen }}</td>
+            <td>{{ ticket.expectedTimeToClose }}</td>
+            <td>{{ ticket.severity }}</td>
+            <td>{{ ticket.status }}</td>
+          </tr>
           </tbody>
         </table>
-        </div>
+      </div>
+      <!-- Ticket details form -->
+      <app-ticket-details-form
+        *ngIf="showForm"
+        [ticketDetails]="selectedTicket"
+        [ticketId]="selectedTicket?.requestId"
+        [requestDate]="selectedTicket?.requestDate"
+        [serviceType]="selectedTicket?.serviceType"
+        [assignedTo]="selectedTicket?.assignedTo"
+        [availedDate]="selectedTicket?.availedDate"
+        [daysOpen]="selectedTicket?.daysOpen"
+        [expectedTimeToClose]="selectedTicket?.expectedTimeToClose"
+        [severity]="selectedTicket?.severity"
+        [status]="selectedTicket?.status"
+        (formSubmitted)="addticketdetails($event)">
+      </app-ticket-details-form>
     </div>
-</div>
+  </div>
 </div>

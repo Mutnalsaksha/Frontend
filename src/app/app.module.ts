@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { OwlModule } from 'ngx-owl-carousel';
+import { RouterModule, Routes} from "@angular/router";
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,8 +15,12 @@ import { LoginComponent } from "./CareTaker/login/login.component";
 import { ServicehandlerComponent} from "./CareTaker/servicehandler/servicehandler.component";
 import { LastsevendaysTableComponent } from './CareTaker/Tickets/lastsevendays-table/lastsevendays-table.component';
 import {DateFormatPipe} from "./pipes/date-format.pipe";
+import { TicketDetailsFormComponent } from './ticket-details-form/ticket-details-form.component';
 
-
+const routes: Routes = [
+  // Other routes...
+  { path: 'ticket-details/:id', component: TicketDetailsFormComponent },
+];
 
 @NgModule({
   declarations: [
@@ -31,6 +35,7 @@ import {DateFormatPipe} from "./pipes/date-format.pipe";
     ServicehandlerComponent,
     LastsevendaysTableComponent,
     DateFormatPipe,
+    TicketDetailsFormComponent,
 
   ],
   imports: [
@@ -38,8 +43,10 @@ import {DateFormatPipe} from "./pipes/date-format.pipe";
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    [RouterModule.forRoot(routes)],
     ReactiveFormsModule
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -10,12 +10,12 @@ import { LoginService} from "../../services/login.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
-  users: any[] = []; // Assuming your user data structure
+  // users: any[] = []; // Assuming your user data structure
   loginError: boolean = false;
 
   constructor(
     private fb: FormBuilder,
-    private loginService: LoginService, // Adjust user name
+    private loginService: LoginService,
     private router: Router
   ) { }
 
@@ -32,20 +32,16 @@ export class LoginComponent implements OnInit{
     return this.loginForm.get('password');
   }
 
-
-
-  ngOnInit(): void {
-
-
-  }
+  ngOnInit(): void {}
 
   onLoginClick() {
-    if (this.loginForm.valid) {
-      const enteredEmail = this.emailControl?.value;
-      const enteredPassword = this.passwordControl?.value;
+    // Check if both email and password fields are not empty
+    if (this.emailControl?.value && this.passwordControl?.value) {
+      // Proceed with login attempt if form is valid
+      if (this.loginForm.valid) {
+        const enteredEmail = this.emailControl?.value;
+        const enteredPassword = this.passwordControl?.value;
 
-      // Check if emailControl and passwordControl are defined before accessing their values
-      if (enteredEmail && enteredPassword) {
         this.loginService.login(enteredEmail, enteredPassword).subscribe(
           (data: any) => {
             console.log('Login response:', data);
@@ -57,12 +53,13 @@ export class LoginComponent implements OnInit{
           }
         );
       } else {
-        console.log('Email or password is null or undefined');
+        console.log('Form is invalid');
       }
     } else {
-      console.log('Form is invalid');
+      console.log('Email or password field is empty');
     }
   }
+
 
   private handleLoginResponse(response: any) {
     if (response.message === 'Login successful') {

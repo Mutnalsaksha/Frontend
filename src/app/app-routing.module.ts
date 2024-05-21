@@ -7,7 +7,7 @@ import { ContactusComponent } from './contactus/contactus.component';
 import {LoginComponent} from "./CareTaker/login/login.component";
 import {ServicehandlerComponent} from "./CareTaker/servicehandler/servicehandler.component";
 import {LastsevendaysTableComponent} from "./CareTaker/Tickets/lastsevendays-table/lastsevendays-table.component";
-
+import { TicketDetailsFormComponent } from "./ticket-details-form/ticket-details-form.component";
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -16,8 +16,10 @@ const routes: Routes = [
   {path:'contactus',component:ContactusComponent},
   {path:'login',component:LoginComponent},
   {path:'service-handler',component:ServicehandlerComponent},
+  {path: 'ticket-details/:id', component: TicketDetailsFormComponent },
+  // { path: '', redirectTo: '/service-handler', pathMatch: 'full' }, // Redirect to service-handler by default
+  // { path: '**', redirectTo: '/service-handler' }, // Redirect to service-handler for any other unknown routes
   {path:'sevendays-table',component:LastsevendaysTableComponent},
-
 
 ];
 
